@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'cinema_id', 'is_admin', 'remember_token',
     ];
 
     /**
@@ -26,9 +26,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+   // protected $primaryKey = 'id';
 
-    public function shipping()
-    {
-        return $this->hasOne("App\Shipping");
-    }
+   
 }

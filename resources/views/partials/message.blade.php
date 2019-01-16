@@ -10,13 +10,13 @@
 @if(session('success'))
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h3><strong align="center">{{session('success')}}</strong></h3>
+        <h5><strong align="center">{{session('success')}}</strong></h5>
     </div>
 @endif
 
 @if(session('error'))   
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h3><strong style="color: red" align="center">{{session('error')}}</strong></h3>
+        </h5><strong style="color: red" align="center">{{session('error')}}</strong></h5>
     </div>
 @endif

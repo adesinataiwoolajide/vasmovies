@@ -42,8 +42,51 @@ Route::group(["prefix" => "admininistrator"], function () {
 
         //Showing Form To Add New User
         Route::get("/create", "UserController@create")->name("user.create");
-        
 
+         //Adding The User
+        Route::post("/create", "UserController@store")->name("user.save");
+        
+    });
+
+    Route::group(["prefix" => "movie"], function(){
+        //Showing the List of Users
+        Route::get("/", "MovieController@index")->name("movie.index");
+
+        //Showing Form To Add New User
+        Route::get("/create", "MovieController@create")->name("movie.create");
+
+         //Adding The User
+        Route::post("/save", "MovieController@store")->name("movie.save");
+        
+        //
+        Route::get("/gallery", "MovieController@movieGallery")->name("movie.gallery");
+
+        Route::get("/edit/{id}", "MovieController@edit")->name("movie.edit");
+
+         Route::post("/update/{id}", "MovieController@update")->name("movie.update");
+        
+    });
+
+     Route::group(["prefix" => "showtimes"], function(){
+        //Showing the List of Users
+        Route::get("/", "ShowtimeController@index")->name("showtime.index");
+
+        //Showing Form To Add New User
+        Route::get("/create", "ShowtimeController@create")->name("showtime.create");
+
+         //Adding The User
+        Route::post("/save", "ShowtimeController@store")->name("showtime.save");
+        
+        //
+        Route::get("delete/{id}", "ShowtimeController@destroy")->name("showtime.delete");
+
+        Route::get("/edit/{id}", "ShowtimeController@edit")->name("showtime.edit");
+
+        Route::post("/update/{id}", "ShowtimeController@update")->name("showtime.update");
+        
+        Route::get("/movieshow", "ShowtimeController@show")->name("showtime.cinema");
+
+        
     });
 });
 

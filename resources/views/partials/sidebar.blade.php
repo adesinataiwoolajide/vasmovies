@@ -36,52 +36,24 @@
                 <li><a href="{{ route("user.create") }}"><span class="fa fa-plus"></span> Add Users</a></li>
             </ul>         
         </li> 
-        <li class="xn-openable">
-            <a href=""><span class="fa fa-cogs"></span> <span class="xn-text">Products Category</span></a>
+        <!-- <li class="xn-openable">
+            <a href=""><span class="fa fa-image"></span> <span class="xn-text">Movies</span></a>
             <ul>
-                <li><a href="add-products-category.php"><span class="fa fa-align-center"></span> Add Category</a></li>
-                <li><a href="view-all-products-categories.php"><span class="fa fa-align-justify"></span> View Categories</a></li>
+                <li><a href="{{ route("movie.create") }}"><span class="fa fa-align-center"></span> Add Movie</a></li>
+                <li><a href="{{ route("movie.index") }}"><span class="fa fa-align-justify"></span> View Movies</a></li>
+                <li><a href="{{ route("movie.gallery") }}"><span class="fa fa-align-justify"></span> View Movies</a></li>
             </ul>         
-        </li> 
-        <li class="xn-openable">
-            <a href=""><span class="fa fa-cogs"></span> <span class="xn-text">Products Manufacturer</span></a>
-            <ul>
-                <li><a href="add-products-manufacturer.php"><span class="fa fa-align-center"></span> Add Manufacturer</a></li>
-                <li><a href="view-all-products-manufacturers.php"><span class="fa fa-align-justify"></span> View Manufacturers</a></li>
-            </ul>         
-        </li> 
-        <li class="xn-openable">
-                <a href=""><span class="fa fa-users"></span> <span class="xn-text">Movie Category</span></a>
-                <ul>
-                    <li><a href=""><span class="fa fa-align-justify"></span> View Categories</a></li>
-                </ul>         
-            </li> 
-            <li class="xn-openable">
-                <a href=""><span class="fa fa-cogs"></span> <span class="xn-text">Products Category</span></a>
-                <ul>
-                    <li><a href="add-products-category.php"><span class="fa fa-align-center"></span> Add Category</a></li>
-                    <li><a href="view-all-products-categories.php"><span class="fa fa-align-justify"></span> View Categories</a></li>
-                </ul>         
-            </li> 
-            <li class="xn-openable">
-                <a href=""><span class="fa fa-cogs"></span> <span class="xn-text">Products Manufacturer</span></a>
-                <ul>
-                    <li><a href="add-products-manufacturer.php"><span class="fa fa-align-center"></span> Add Manufacturer</a></li>
-                    <li><a href="view-all-products-manufacturers.php"><span class="fa fa-align-justify"></span> View Manufacturers</a></li>
-                </ul>         
-            </li> 
-        <li class="xn-openable">
-            <a href=""><span class="fa fa-cogs"></span> <span class="xn-text">Products Types</span></a>
-            <ul>
-                <li><a href="add-products-type.php"><span class="fa fa-align-center"></span> Add Types</a></li>
-                <li><a href="view-all-products-types.php"><span class="fa fa-align-justify"></span> View All Types</a></li>
-            </ul>         
-        </li> 
+        </li>  -->
 
-        <li class="">
-            <a href="my-activities.php"><span class="fa fa-cloud"></span> <span class="xn-text">My Activities</span></a>
-        </li>
-        
+        <li class="xn-openable">
+            <a href=""><span class="fa fa-image"></span> <span class="xn-text">Show Times</span></a>
+            <ul>
+                <li><a href="{{ route("showtime.create") }}"><span class="fa fa-align-center"></span> Add A Showtime</a></li>
+                <li><a href="{{ route("showtime.index") }}"><span class="fa fa-align-justify"></span> View Show time</a></li>
+                <li><a href="{{ route("showtime.cinema") }}"><span class="fa fa-align-justify"></span> View Cinema Show</a></li>
+            </ul>         
+        </li> 
+ 
     </ul>
 
 </div>
