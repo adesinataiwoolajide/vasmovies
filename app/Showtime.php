@@ -11,4 +11,14 @@ class Showtime extends Model
     protected $fillable = [
         'movie_id', 'showing_time', 'showing_date', 'cinema_id',
     ];
+
+    public function movies()
+    {
+        return $this->belongsTo("App\Movie", 'cinema_id');
+    }
+
+    public function cinemas()
+    {
+        return $this->hasMany("App\Cinema");
+    }
 }

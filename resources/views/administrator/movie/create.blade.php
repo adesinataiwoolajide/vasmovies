@@ -30,13 +30,23 @@
                                             <input type="file" class="form-control" name="movie_banner"  minlength="2" />
                                         </div>                                            
                                         <span class="help-block" style="color: green;">This is field is Optional.</span>
+                                        @if ($errors->has('movie_banner'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('movie_banner') }}
+                                            </div>
+                                        @endif  
                                     </div>
                                     <label class="col-md-1 col-xs-6 control-label">MOVIES NAME</label>
                                     <div class="col-md-5 col-xs-6">                                            
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-user"></span></span>
                                             <input type="text" class="form-control" name="movie_title" placeholder="Please Enter The Name" required minlength="2" />
-                                        </div>                                            
+                                        </div> 
+                                        @if ($errors->has('movie_title'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('movie_tite') }}
+                                            </div>
+                                        @endif                                           
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div>
                                 </div>
@@ -57,7 +67,12 @@
                                                     <option value="Indegenous"> Indegenous </option>
                                                     <option value="Religious"> Religious </option>
                                                 </select>
-                                            </div>                                                 
+                                            </div>   
+                                            @if ($errors->has('movie_category'))
+                                                <div class="alert alert-danger">
+                                                    {{ $errors->first('movie_category') }}
+                                                </div>
+                                            @endif                                              
                                             <span class="help-block" style="color: red;">This is field is Required.</span>
                                         </div>  
                                     <label class="col-md-1 col-xs-6 control-label">CINEMA LOCATION</label>
@@ -72,7 +87,12 @@
                                                     <option value="{{ $cinemas->id }}">{{ $cinemas->cinema_name }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>                                                 
+                                        </div>  
+                                        @if ($errors->has('cinema_id'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('cinema_id') }}
+                                            </div>
+                                        @endif                                               
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div> 
                                 </div>
@@ -86,7 +106,12 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-sitemap"></span></span>
                                             <textarea name="description" required class="form-control" placeholder="Enter The Film Description"></textarea>
-                                        </div>                                                 
+                                        </div>      
+                                        @if ($errors->has('description'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('description') }}
+                                            </div>
+                                        @endif                                           
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div> 
 
@@ -95,7 +120,12 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-users"></span></span>
                                             <textarea name="top_actors" required class="form-control" placeholder="Enter The Top Actors Seperating Them with Coma"></textarea>
-                                        </div>                                                 
+                                        </div>  
+                                        @if ($errors->has('top_actors'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('top_actors') }}
+                                            </div>
+                                        @endif                                               
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div> 
                                 </div>

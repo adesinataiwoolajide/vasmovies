@@ -10,7 +10,7 @@
         <div class="page-content-wrap">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route("showtime.save") }}" method="post" class="form-horizontal">
+                    <form action="{{ route("showtime.update", $showtime->id) }}" method="post" class="form-horizontal">
                         {{ csrf_field() }}
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -28,7 +28,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-cog"></span></span>
                                             <select class="form-control " name="movie_id" required>
-                                                <option value="">-- Select The Movie Title --
+                                                <option value="{{ $showtime->movie_id }}">{{ $showtime->movie_id }}
                                                 </option>
                                                 <option value=""></option>
                                                 @foreach($movie as $movies)
@@ -48,19 +48,19 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-calender"></span></span>
                                             <select class="form-control " name="cinema_id" required>
-                                                <option value="">-- Select The Cinema Location --
+                                                <option value="{{ $showtime->cinema_id }}">{{ $showtime->cinema_id }}
                                                 </option>
                                                 <option value=""></option>
                                                 @foreach($cinema as $cinemas)
                                                     <option value="{{ $cinemas->id }}">{{ $cinemas->cinema_name }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>   
+                                        </div> 
                                         @if ($errors->has('cinema_id'))
                                             <div class="alert alert-danger">
                                                 {{ $errors->first('cinema_id') }}
                                             </div>
-                                        @endif                                                
+                                        @endif                                                  
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div> 
                                     
@@ -73,7 +73,7 @@
                                     <div class="col-md-5 col-xs-6">                                             
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                            <input type="date" name="showing_date" required="" class="form-control" placeholder="Enter The Date">
+                                            <input type="date" name="showing_date" required="" value="{{ $showtime->showing_date }}" class="form-control" placeholder="Enter The Date">
                                         </div>                                                 
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div> 
@@ -82,16 +82,16 @@
                                     <div class="col-md-5 col-xs-6">                                             
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-bell"></span></span>
-                                            <input type="text" name="showing_time" required="" class="form-control" placeholder="Enter The Showing Time e.g 4: 00 PM CAT">
+                                            <input type="text" name="showing_time" required="" class="form-control" value="{{ $showtime->showing_time }}" placeholder="Enter The Showing Time e.g 4: 00 PM CAT">
                                         </div>                                                 
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div> 
                                 </div>
                             </div>
 
-       
+                            <input type="hidden" name="id" value="{{ $showtime->id }}">
                             <div class="panel-footer col-md-12">                                 
-                                <button class="btn btn-success pull-right">ADD THE MOVIE SHOW TIME</button>
+                                <button class="btn btn-success pull-right">UPDATE THE MOVIE SHOW TIME</button>
                             </div>
                            
                         </div>

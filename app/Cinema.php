@@ -10,12 +10,18 @@ class Cinema extends Model
     protected $fillable = [
         'cinema_name', 'cinema_location',
     ];
-     //protected $primaryKey = 'id';
+     protected $primaryKey = 'id';
 
-    public function user()
+    public function movies()
     {
-        return $this->belongsTo("App\User");
+        return $this->hasMany("App\Movie", 'cinema_id');
     }
+
+	public function showtimes()
+    {
+        return $this->hasMany(Showtime::class);
+    }
+
 
     
 }

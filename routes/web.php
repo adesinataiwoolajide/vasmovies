@@ -30,11 +30,17 @@ Route::group(["prefix" => "admininistrator"], function () {
         Route::get("/create", "CinemaController@index")->name("cinema.index");
 
         //Adding The Cnema
-        Route::post("/create", "CinemaController@store")->name("cinema.save");
+        Route::post("/save", "CinemaController@store")->name("cinema.save");
+
+        Route::get("/edit/{id}", "CinemaController@edit")->name("cinema.edit");
+
+        Route::post("/update/{id}", "CinemaController@update")->name("cinema.update");
 
         //Deleting From the List of Cinema
         Route::get("/delete/{cinema_id}", "CinemaController@destroy")->name("cinema.delete");
     });
+
+
 
     Route::group(["prefix" => "user"], function(){
         //Showing the List of Users
@@ -44,9 +50,18 @@ Route::group(["prefix" => "admininistrator"], function () {
         Route::get("/create", "UserController@create")->name("user.create");
 
          //Adding The User
-        Route::post("/create", "UserController@store")->name("user.save");
+        Route::post("/save", "UserController@store")->name("user.save");
+
+        Route::get("/show/{id}", "UserController@show")->name("user.show");
+
+        Route::get("/edit/{id}", "UserController@edit")->name("user.edit");
+
+        Route::get("delete/{id}", "UserController@destroy")->name("user.delete");
+
+        Route::post("/update/{id}", "UserController@update")->name("user.update");
         
     });
+
 
     Route::group(["prefix" => "movie"], function(){
         //Showing the List of Users
@@ -58,12 +73,15 @@ Route::group(["prefix" => "admininistrator"], function () {
          //Adding The User
         Route::post("/save", "MovieController@store")->name("movie.save");
         
+        Route::get("/show/{id}", "MovieController@show")->name("movie.show");
+
         //
         Route::get("/gallery", "MovieController@movieGallery")->name("movie.gallery");
 
         Route::get("/edit/{id}", "MovieController@edit")->name("movie.edit");
+        Route::get("delete/{id}", "MovieController@destroy")->name("movie.delete");
 
-         Route::post("/update/{id}", "MovieController@update")->name("movie.update");
+        Route::post("/update/{id}", "MovieController@update")->name("movie.update");
         
     });
 
@@ -83,7 +101,7 @@ Route::group(["prefix" => "admininistrator"], function () {
         Route::get("/edit/{id}", "ShowtimeController@edit")->name("showtime.edit");
 
         Route::post("/update/{id}", "ShowtimeController@update")->name("showtime.update");
-        
+
         Route::get("/movieshow", "ShowtimeController@show")->name("showtime.cinema");
 
         

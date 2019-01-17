@@ -13,41 +13,39 @@
                         <div class="widget widget-warning widget-carousel">
                             <div class="owl-carousel" id="owl-example">
                                 <div>                                    
-                                    <div class="widget-title">Total Visitors</div>                                                                        
-                                    <div class="widget-subtitle">27/08/2014 15:23</div>
-                                    <div class="widget-int">3,548</div>
+                                    <div class="widget-title">Total</div>                                                                        
+                                    <div class="widget-subtitle">Users</div>
+                                    <div class="widget-int">{{ count($user)}}</div>
                                 </div>
                                 <div>                                    
-                                    <div class="widget-title">Returned</div>
-                                    <div class="widget-subtitle">Visitors</div>
-                                    <div class="widget-int">1,695</div>
+                                    <div class="widget-title">Cinema</div>
+                                    <div class="widget-subtitle">House</div>
+                                    <div class="widget-int">{{ count($cinema)}}</div>
                                 </div>
                                 <div>                                    
-                                    <div class="widget-title">New</div>
-                                    <div class="widget-subtitle">Visitors</div>
-                                    <div class="widget-int">1,977</div>
+                                    <div class="widget-title">Total </div>
+                                    <div class="widget-subtitle">Movies</div>
+                                    <div class="widget-int">{{ count($movie)}}</div>
                                 </div>
                             </div>                                                      
                         </div>
 
                     </div>
                     <div class="col-md-3">
-
                         <div class="widget widget-primary">
-                            <div class="widget-title">TOTAL</div>
+                            <div class="widget-title">CINEMA HOUSE</div>
                             <div class="widget-subtitle">26/08/2014</div>
-                            <div class="widget-int">$ <span data-toggle="counter" data-to="1564">1,564</span></div>
+                            <div class="widget-int">{{ count($movie)}}<span data-toggle="counter" data-to="{{ count($cinema)}}"></span></div>
                         </div>
-
                     </div>
                     <div class="col-md-3">
-
-                        <div class="widget widget-success widget-no-subtitle">
-                            <div class="widget-big-int">$ <span class="num-count">4,381</span></div>                            
-                            <div class="widget-subtitle">Latest transaction</div>                            
-                        </div>                        
-
+                        <div class="widget widget-success">
+                            <div class="widget-title">TOTAL MOVIES</div>
+                            <div class="widget-subtitle">26/08/2014</div>
+                            <div class="widget-int">{{ count($cinema)}} <span data-toggle="counter" data-to="{{ count($cinema)}}"></span></div>
+                        </div>
                     </div>
+                    
                     <div class="col-md-3">
                         <div class="widget widget-danger widget-padding-sm">
                             <div class="widget-big-int plugin-clock">00:00</div>                            

@@ -40,10 +40,10 @@
                                         <td><?php echo $number ?></td>
                                         <td>{{ $users->email }}</td>
                                         <td>{{ $users->name }}</td>
-                                        <td>{{ $users->cinema->cinema_name }}</td>
-                                        <td><a href="" class="btn btn-success"><i class="fa fa-cogs"></i> Movie List</a>
-                                            <a href="" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                            <a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                        <td>{{ $users->name }}</td>
+                                        <td>
+                                            <a href="{{ route("user.edit", $users->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                                            <a href="{{ route("user.delete", $users->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                                         </td>
                                     </tr><?php $number++; ?>
                                 @endforeach

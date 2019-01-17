@@ -44,13 +44,13 @@
                                         @foreach($showtime as $showtimes)
                                             <tr>
                                                 <td><?php echo $number ?></td>
-                                                <td>{{ $showtimes->movie_id }}</td>
-                                                <td>{{ $showtimes->movie_id }}</td>
-                                                <td>{{ $showtimes->cinema_id }}</td>
+                                                <td></td>
+                                                <td>Image</td>
+                                                <td>{{ $showtimes->id }}</td>
                                                 <td>{{ $showtimes->showing_date }}</td>
                                                 <td>{{ $showtimes->showing_time }}</td>
                                                 <td>
-                                                    <a href="" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a href="{{ route("showtime.edit", $showtimes->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
                                                     <a href="{{ route("showtime.delete", $showtimes->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                                                 </td>
                                             </tr><?php $number++; ?>

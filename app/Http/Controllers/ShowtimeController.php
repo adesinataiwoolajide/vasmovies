@@ -23,13 +23,14 @@ class ShowtimeController extends Controller
      */
     public function index()
     {
-        //$cinema = Movie::with('moviescinema')->get();
+        //$showing = Cinema::with('movies')->get();
+        //$showing = Showtime::find('movie_id')->movies;
         //$cinema->Cinema()->where('cinema_id','id',$user->age)->get();
         //$movie= $this->model->all();
         $showtime= $this->model->all();
         return view('administrator.showtime.index')->with(
             [
-               // "cinema" =>$cinema,
+               // "showing" =>$showing,
                 "showtime" => $showtime,
             ]
         );
@@ -97,7 +98,16 @@ class ShowtimeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cinema = Cinema::orderBy('cinema_name', 'asc')->get();
+        $movie = Movie::orderBy('movie_title', 'asc')->get();
+        $showtime = $this->model->show($id);
+        return view('administrator.showtime.edit')->with(
+            [
+                "cinema" =>$cinema,
+                "movie" =>$movie,
+                "showtime" => $showtime
+            ]
+        );
     }
 
     /**
@@ -109,7 +119,22 @@ class ShowtimeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'movie_id' =>'required|min:1',
+            'cinema_id' =>'required|min:1|max:255',
+            'showing_date' => 'required|min:1|max:50',
+            'showing_time' => 'required|min:1|max:50',
+        ]);
+
+        $showtime = $this->model->show($id);
+        $showtime->movie_id = $request->input('movie_id');
+        $showtime->cinema_id = $request->input('cinema_id');
+        $showtime->showing_date = $request->input('showing_date');
+        $showtime->showing_time = $request->input('showing_time');
+
+        if($this->model->update($request->only($this->model->getModel()->fillable), $id)){
+            return redirect()->route("showtime.index")->with("success", "You Have Updated The Movie Showtime Details Successfully");
+        } 
     }
 
     /**

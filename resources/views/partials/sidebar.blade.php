@@ -36,14 +36,14 @@
                 <li><a href="{{ route("user.create") }}"><span class="fa fa-plus"></span> Add Users</a></li>
             </ul>         
         </li> 
-        <!-- <li class="xn-openable">
+        <li class="xn-openable">
             <a href=""><span class="fa fa-image"></span> <span class="xn-text">Movies</span></a>
             <ul>
                 <li><a href="{{ route("movie.create") }}"><span class="fa fa-align-center"></span> Add Movie</a></li>
                 <li><a href="{{ route("movie.index") }}"><span class="fa fa-align-justify"></span> View Movies</a></li>
                 <li><a href="{{ route("movie.gallery") }}"><span class="fa fa-align-justify"></span> View Movies</a></li>
             </ul>         
-        </li>  -->
+        </li> 
 
         <li class="xn-openable">
             <a href=""><span class="fa fa-image"></span> <span class="xn-text">Show Times</span></a>

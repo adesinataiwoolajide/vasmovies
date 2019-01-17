@@ -80,7 +80,12 @@ class CinemaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cinema =  $this->model->show($id);  
+        return view('administrator.cinema.edit')->with(
+            [
+                "cinema" =>$cinema,
+            ]
+        );
     }
 
     /**
@@ -92,7 +97,18 @@ class CinemaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            'cinema_name' =>'required|min:1',
+            'cinema_location' =>'required|min:1|max:255',
+        ]);
+
+        $cinema= $this->model->show($id);
+        $cinema->cinema_name = $request->input('cinema_name');
+        $cinema->cinema_location = $request->input('cinema_location');
+
+        if($this->model->update($request->only($this->model->getModel()->fillable), $id)){
+            return redirect()->route("cinema.index")->with("success", "You Have Updated The Cinema Details Successfully");
+        } 
     }
 
     /**

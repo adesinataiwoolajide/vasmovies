@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{User};
+use App\{User, Showtime, Movie, Cinema};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 class AdministratorController extends Controller
@@ -13,10 +13,16 @@ class AdministratorController extends Controller
         $this->middleware("auth");
     }
 
+     protected $model;
+
+
     public function show()
     {
-        $data = [
-            
+       $data = [
+            "user" => User::all(),
+            "showtime" => Showtime::all(),
+            "movie" => Movie::all(),
+            "cinema" => Cinema::all(),
         ];
         return view("administrator.home")->with($data);
     }

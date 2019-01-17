@@ -24,11 +24,17 @@ class MovieController extends Controller
     public function index()
     {
         //$cinema = Movie::with('moviescinema')->get();
-        //$cinema->Cinema()->where('cinema_id','id',$user->age)->get();
+
+
+        ///Cinema::with('movies')->where('id','cinema_id')->get();
+
+
+        //return Movie::find('id')->cinemas()->where('id', 'cinema_id')->first();
+        $cinema= Movie::with('cinemas')->get();
         $movie= $this->model->all();
         return view('administrator.movie.index')->with(
             [
-               // "cinema" =>$cinema,
+                "cinema" =>$cinema,
                 "movie" => $movie,
             ]
         );
@@ -107,7 +113,14 @@ class MovieController extends Controller
     }
     public function show($id)
     {
-        //
+         $movie = $this->model->show($id);
+        return view('administrator.movie.show')->with(
+            [
+               // "cinema" => $cinema,
+                "movie" => $movie,
+
+            ]
+        ); 
     }
 
     /**
@@ -181,6 +194,9 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movie =  $this->model->show($id);
+        if($this->model->delete($id)){
+            return redirect()->back()->with("success", "You Have Deleted The Movie Successfully"); 
+        }
     }
 }

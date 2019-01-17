@@ -30,17 +30,19 @@
                                                 <div class="profile-data">
                                                     <div class="profile-data-name">{{ $movies->movie_title }}</div>
                                                     <div class="profile-data-title">{{ $movies->movie_category }}</div>
+                                                    <a href="{{ route("movie.delete", $movies->id) }}" class="profile-control-left"><span class="fa fa-trash-o"></i>Delete</a>
                                                 </div>
                                                 <div class="profile-controls">
                                                     <a href="{{ route("movie.edit", $movies->id) }}" class="profile-control-left"><span class="fa fa-pencil"></span></a>
-                                                    <a href="" class="profile-control-right"><span class="fa fa-cogs"></span></a>
+
+                                                    <a href="{{ route("movie.show", $movies->id) }}" class="profile-control-right"><span class="fa fa-cogs"></span></a>
                                                 </div>
                                             </div>                                
                                             <div class="panel-body">                                    
                                                 <div class="contact-info">
-                                                    <p><small>Cinema Location</small><br/>{{ $movies->cinema_id }}</p>
-                                                    <p><small>Email</small><br/>nadiaali@domain.com</p>
-                                                    <p><small>Address</small><br/>123 45 Street San Francisco, CA, USA</p>                                   
+                                                    
+                                                    <p><small>Cinema Location</small>{{$movies->cinema_id}}<br/></p>
+                                                                                  
                                                 </div>
                                             </div>   
                                                                       

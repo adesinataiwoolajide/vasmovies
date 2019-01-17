@@ -27,6 +27,11 @@
                                             <input type="text" class="form-control" name="cinema_name" placeholder="Please Enter The Type Name" required minlength="2" />
                                         </div>                                            
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
+                                        @if ($errors->has('cinema_name'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('cinema_name') }}
+                                            </div>
+                                        @endif  
                                     </div>
                                     <label class="col-md-1 col-xs-5 control-label">CINEMA LOCATION</label>
                                     <div class="col-md-4 col-xs-5">                                            
@@ -40,7 +45,12 @@
                                                 <option value="Ikeja">Ikeja</option>
                                                 <option value="Lekki">Lekki</option>
                                             </select>
-                                        </div>                                                 
+                                        </div> 
+                                        @if ($errors->has('cinema_location'))
+                                            <div class="alert alert-danger">
+                                                {{ $errors->first('cinema_location') }}
+                                            </div>
+                                        @endif                                                  
                                         <span class="help-block" style="color: red;">This is field is Required.</span>
                                     </div>  
     
@@ -89,7 +99,7 @@
                                                 <td>{{ $cinemas->cinema_name }}</td>
                                                 <td>{{ $cinemas->cinema_location }}</td>
                                                 <td><a href="" class="btn btn-success"><i class="fa fa-cogs"></i> Movie List</a>
-                                                    <a href="" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                                                    <a href="{{ route("cinema.edit", $cinemas->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
                                                     <a href="{{ route("cinema.delete", $cinemas->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
                                                 </td>
                                             </tr><?php $number++; ?>
