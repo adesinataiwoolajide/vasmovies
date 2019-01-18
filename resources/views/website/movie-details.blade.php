@@ -4,17 +4,10 @@
 
         <section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
             <div class="container">
-            <div class="inner">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('website.home')}}">Home</a></li>
-                    @foreach($showtimes as $see)
-                        <li><a href="{{ route("movie.details", $see->id) }}">Movie Details</a></li>
-                    @endforeach
-                    <li><a href="{{ route('movie.list')}}">Movie List</a></li>
-                    <li></li>
-                </ol>
+                <div class="inner">
+                    
+                </div>
             </div>
-        </div>
         </section>
 
         <main class="ptb100">
@@ -71,7 +64,7 @@
                                     <h3 class="title">Show Times</h3>
 
                                     <ul>
-                                        @foreach(gettingCinemaMovies($see->cinema_id, $see->id) as $drop)
+                                        @foreach(gettingCinemaMovesHowtimes($see->cinema_id) as $drop)
                                            <li><strong>In Cenema: </strong>{{$drop->showing_date}}</li>
                                            <li><strong>Showing Time: </strong>{{$drop->showing_time}} CAT</li>
                                            <li><strong>Cenema Date: </strong>{{$drop->showing_date}}</li>

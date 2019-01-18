@@ -4,12 +4,7 @@
        
         <section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
             <div class="container">
-                <div class="inner">
-                    <ol class="breadcrumb">
-                        <li><a href="{{ route('website.home')}}">Home</a></li>
-                        <li>Home Page</li>
-                    </ol>
-                </div>
+                
             </div>
         </section>
        <section class="latest-tvshows ptb100">
@@ -18,7 +13,7 @@
                 <!-- Start of row -->
                 <div class="row">
                     <div class="col-md-8">
-                        <h2 class="title">Latest Movies</h2>
+                        <h2 class="title">Our Movies</h2>
                     </div>
 
 

@@ -5,12 +5,7 @@
         <section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
             <div class="container">
                 <div class="inner">
-                    <h2 class="title">List of Movies</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="{{ route('website.home')}}">Home</a></li>
-                        <li><a href="{{ route('movie.list')}}">Movie List</a></li>
-                        <li></li>
-                    </ol>
+                    
                 </div>
             </div>
         </section>

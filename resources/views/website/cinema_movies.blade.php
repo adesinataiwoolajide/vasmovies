@@ -2,17 +2,10 @@
     @section("content")
         @include('partials.nav')
 
-        <section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
+         <section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
             <div class="container">
-                 <div class="container">
-                    <div class="inner">
-                        <ol class="breadcrumb">
-                            <li><a href="{{ route('website.home')}}">Home</a></li>
-                            
-                            <li><a href="{{ route('movie.list')}}">Movie List</a></li>
-                            <li>List of Cinema Movies</li>
-                        </ol>
-                    </div>
+                <div class="inner">
+                    
                 </div>
             </div>
         </section>
@@ -28,19 +21,7 @@
                             <h3><p style="color: red" align="center">No Movie is available for the selected Cinema</p></h3>
                         </div>
                     @else
-                    <div class="row mb50">
-                        <div class="col-md-6">
-                            <!-- Layout Switcher -->
-                            <div class="layout-switcher">
-                                <a href="" class="grid active"><i class="fa fa-th"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h3><p>List of Movies</p></h3>
-
-                        </div>
-                    </div>
+                        
                         @foreach($cinemalist as $list)
                             <div class="col-lg-4 col-md-6 col-sm-12">
                                 <div class="movie-box-2 mb30">
@@ -49,7 +30,9 @@
                                         <!-- Movie List Image -->
                                         <div class="listing-image">
                                             <!-- Image -->
-                                            <img src="/website/assets/images/posters/poster-1.jpg" alt="">
+                                            @foreach(gettingMoivesId($list->id, $list->cinema_id) as $droping)
+                                                <img src="{{asset('movie_banner/'.$droping->movie_banner)}}" style="width:350px; height: 444px;" align="center">
+                                             @endforeach
                                         </div>
 
                                         <!-- Movie List Content -->
@@ -83,6 +66,7 @@
                                                     <li><strong>Cinema House: </strong>{{$loc->cinema_name}}</li>
                                                 @endforeach
                                             @endforeach
+                                            <br>
                                         </ul>
                                     </aside>
                                 </div>

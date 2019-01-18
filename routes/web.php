@@ -14,16 +14,16 @@
 Route::get('/', 'HomeController@index')->name('website.home');
 Route::get('/movielist', 'HomeController@movielist')->name('movie.list');
 Route::get('/moviedetails/{id}', 'HomeController@moviedetails')->name('movie.details');
-Route::get('/moviedetails/{id}/{cinema_id}', 'HomeController@moviedetailshow')->name('movie.show');
+//Route::get('/moviedetails/{id}', 'HomeController@moviedetailshow')->name('movie.showing');
 Route::get('/cinema-movies/{id}', 'HomeController@cinemaMovies')->name('movie.cinema');
-Route::get('/moviedays/{days}', 'HomeController@moviedays')->name('movie.day');
+Route::get('/moviedays/{show_day}', 'HomeController@moviedays')->name('movie.day');
 
 Route::get("/admin", function(){
     return view("admin.login");
 });
 
 //grouping the administrator routes
-Route::group(["prefix" => "admin"], function () {
+Route::group(["prefix" => "admin"], function(){
     //Showing the admin login form
     //Route::get("/admin", "AccountController@index")->name("administrator.index");
 
@@ -119,3 +119,7 @@ Route::group(["prefix" => "admin"], function () {
     });
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

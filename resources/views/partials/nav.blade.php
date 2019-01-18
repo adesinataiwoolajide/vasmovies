@@ -50,7 +50,7 @@
                                 <!-- Menu Item -->
                                 @foreach($movie as $movies)
                                     <li>
-                                        <a class="dropdown-item" href="{{ route("movie.show", $movies->id) }}">
+                                        <a class="dropdown-item" href="{{ route("movie.details", $movies->id) }}">
                                         	{{ $movies->movie_title}}
                                         </a>
                                     </li>
@@ -62,28 +62,29 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Showtimes</a>
-    
-                                <!-- Dropdown Menu -->
-                                <ul class="dropdown-menu">
-                                    <!-- Menu Item --><?php
-                                    $day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-                                    ?>
-                                    
-                                    @foreach($day as $days)
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route('movie.day', $days)}}">{{ $days}}</a>
-                                        </li>
-    
-                                        <!-- Divider -->
-                                        <li class="divider" role="separator"></li>
-                                     @endforeach
-                                </ul>
-                            </li>
-                        <!-- Menu Item -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Contact us</a>
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Showtimes</a>
+
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu">
+                                <!-- Menu Item --><?php
+                                $day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                                ?>
+                                
+                                @foreach($day as $show_day)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('movie.day', $show_day)}}">{{ $show_day}}</a>
+                                    </li>
+
+                                    <!-- Divider -->
+                                    <li class="divider" role="separator"></li>
+                                 @endforeach
+                            </ul>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('movie.list')}}">Movie List</a>
+                        </li>
+                        <!-- Menu Item -->
 
                     </ul>
                    
