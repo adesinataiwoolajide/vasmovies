@@ -1,9 +1,9 @@
-git-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2019 at 06:54 AM
+-- Generation Time: Jan 18, 2019 at 04:39 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -41,13 +41,9 @@ CREATE TABLE `cinemas` (
 --
 
 INSERT INTO `cinemas` (`id`, `cinema_name`, `cinema_location`, `created_at`, `updated_at`) VALUES
-(6, 'Glorious', 'Lagos', '2019-01-15 11:08:28', '2019-01-15 11:08:28'),
-(8, 'Empire', 'Lagos', '2019-01-15 11:09:09', '2019-01-15 11:09:09'),
-(9, 'Empire ssg', 'Lagos', '2019-01-15 11:13:54', '2019-01-15 11:13:54'),
-(10, 'Empiredqxfw', 'Lagos', '2019-01-15 11:14:58', '2019-01-15 11:14:58'),
-(11, 'Ventura', 'Apapa', '2019-01-15 11:21:02', '2019-01-15 11:21:02'),
-(12, 'Favours', 'Apapa', '2019-01-16 07:48:26', '2019-01-16 07:48:26'),
-(14, 'Hope', 'Lekki', '2019-01-16 15:15:49', '2019-01-16 15:16:10');
+(1, 'Glorious', 'Apapa', '2019-01-17 21:46:48', '2019-01-17 21:46:48'),
+(2, 'Empire', 'Ikeja', '2019-01-17 21:47:10', '2019-01-17 21:47:10'),
+(3, 'Vas Movies', 'Lekki', '2019-01-17 21:47:28', '2019-01-17 21:47:28');
 
 -- --------------------------------------------------------
 
@@ -94,16 +90,18 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id`, `movie_title`, `movie_category`, `movie_banner`, `cinema_id`, `top_actors`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Brandddd', 'Comedy', 'ABUBAKAR SANI BELLO – NIGER STATE_1547643197.jpg', 10, 'recretwxdsffdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', 'dsewrhvewcvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv', '2019-01-16 11:28:10', '2019-01-16 16:19:09'),
-(3, 'Trainig', 'Action', '', 12, 'juvhfcdtrnftynvgfcthdny', 'fjytchrj6mc', '2019-01-16 11:37:46', '2019-01-16 16:20:06'),
-(4, 'Brandooujjn', 'Indegenous', '', 10, 'jnjnunhnhnu', 'huhjnjnunun', '2019-01-16 11:44:56', '2019-01-16 11:44:56'),
-(5, 'tsjdvrtbydttrrbt', 'Comedy', '', 10, 'dfWGHNSTAWF', 'EESBSRTT', '2019-01-16 11:46:32', '2019-01-16 11:46:32'),
-(7, 'Shouldersddd', 'Action', 'C:\\xampp\\tmp\\php3EC5.tmp', 10, '4CWC', 'GVACREE', '2019-01-16 11:55:58', '2019-01-16 11:55:58'),
-(8, 'Shouldersdddedwrrw', 'Action', 'C:\\xampp\\tmp\\php8EDE.tmp', 10, '4CWC', 'GVACREE', '2019-01-16 12:02:51', '2019-01-16 12:02:51'),
-(9, 'Shouldersdddedwrrwgfvt', 'Action', 'C:\\xampp\\tmp\\php2971.tmp', 10, '4CWC', 'GVACREE', '2019-01-16 12:08:59', '2019-01-16 12:08:59'),
-(10, 'COmpliant', 'Action', 'C:\\xampp\\tmp\\php77CE.tmp', 10, 'yrtnurervrtry juuyterwyyuubt', 'nmjkljthyrbhvecvtry', '2019-01-16 12:13:41', '2019-01-16 12:13:41'),
-(11, 'rtybntrewqcxgw', 'Comedy', 'C:\\xampp\\tmp\\phpCE37.tmp', 10, 'av wc4et5vy63754c5645', '354g6746535423d5465', '2019-01-16 12:41:22', '2019-01-16 12:41:22'),
-(12, '4b66r3f', 'Religious', 'C:\\xampp\\tmp\\phpB1A8.tmp', 12, 'v453434', 'v46c53345d', '2019-01-16 12:48:54', '2019-01-16 12:48:54');
+(1, 'Arrival', 'Action', 'Arrival_1547803202.jpg', 2, 'Tola, Kenny, Kelvin, Odun', 'This is an Indian Action Movie', '2019-01-17 21:58:27', '2019-01-18 08:20:02'),
+(2, 'Exodus', 'Religious', 'exodus-gods-and-kings-545d433b2af6e_1547765987.jpg', 1, 'David. Kola. Josh, Tele', 'This is good', '2019-01-17 21:59:47', '2019-01-17 21:59:47'),
+(3, 'Justice League', 'Comedy', 'Justice-League_1547766048.jpg', 3, 'All Actors, Directors, Hope', 'This is fresh', '2019-01-17 22:00:48', '2019-01-17 22:00:48'),
+(4, 'The Kick', 'Indegenous', 'kick_1547766109.jpg', 2, 'Henry, Joke, Ope', 'Indian Movie', '2019-01-17 22:01:49', '2019-01-17 22:01:49'),
+(5, 'Red Bad', 'Religious', 'redbad_1547766191.jpg', 1, 'Kola, Kunle, Dayo , More', 'This is more than Good', '2019-01-17 22:03:11', '2019-01-17 22:03:11'),
+(6, 'Veronica', 'Action', 'veronica-mars-movie-poster_1547766275.jpg', 3, 'Aloma, Kelly, Nelly, Goke, Joke', 'This is all about action Movie', '2019-01-17 22:04:35', '2019-01-17 22:04:35'),
+(7, 'Colide', 'Action', 'colide_1547766423.jpg', 2, 'CMan, Sola, Goke, The Rock', 'More than Awesome', '2019-01-17 22:07:03', '2019-01-17 22:07:03'),
+(8, 'Widows', 'Indegenous', 'widows_1547766580.jpg', 1, 'Kelvin, Hart, Jokky, Umelo', 'They all lost their loved ones', '2019-01-17 22:09:40', '2019-01-17 22:09:40'),
+(9, 'Lopper', 'Indegenous', 'lopper_1547766742.jpg', 3, 'Gope, Kola, Rolly, Fola, Favous', 'Whjat hapened was unimaginable', '2019-01-17 22:12:22', '2019-01-17 22:12:22'),
+(10, 'Terminator', 'Action', 'terminator-5_1547766820.jpg', 2, 'Commando, Ranbo, Jet li, Joke', 'This is a movie by commando', '2019-01-17 22:13:40', '2019-01-17 22:13:40'),
+(11, 'Hancook', 'Action', 'hancook_1547766917.jpg', 1, 'Smith, Paul ,Stephen, Martins', 'He is so powerful', '2019-01-17 22:15:17', '2019-01-17 22:15:17'),
+(12, 'Tomb Raider', 'Action', 'tomb_1547767022.jpg', 2, 'Kenny, Kola, folly, Tope, Emma, Peter', 'This a movie about Revenge', '2019-01-17 22:17:02', '2019-01-17 22:17:02');
 
 -- --------------------------------------------------------
 
@@ -129,6 +127,8 @@ CREATE TABLE `show_times` (
   `showing_time` text NOT NULL,
   `showing_date` text NOT NULL,
   `cinema_id` int(255) NOT NULL,
+  `show_day` varchar(20) DEFAULT NULL,
+  `amount` int(25) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -137,9 +137,13 @@ CREATE TABLE `show_times` (
 -- Dumping data for table `show_times`
 --
 
-INSERT INTO `show_times` (`id`, `movie_id`, `showing_time`, `showing_date`, `cinema_id`, `updated_at`, `created_at`) VALUES
-(2, 3, '4:PM CATb76687697b584356', '2019-01-07', 12, '2019-01-16 18:08:29', '2019-01-16 19:08:29'),
-(5, 12, '4:PM CAT Timedd', '2020-01-07', 9, '2019-01-16 14:23:34', '2019-01-16 15:23:34');
+INSERT INTO `show_times` (`id`, `movie_id`, `showing_time`, `showing_date`, `cinema_id`, `show_day`, `amount`, `updated_at`, `created_at`) VALUES
+(1, 1, '15:02', '2019-01-06', 1, 'Friday', 4000, '2019-01-17 23:39:23', '2019-01-18 00:39:23'),
+(2, 9, '10:30', '2019-01-08', 2, 'Monday', 2000, '2019-01-18 07:36:18', '2019-01-18 07:36:18'),
+(3, 3, '11:00', '2019-01-08', 1, 'Tuesday', 5000, '2019-01-18 07:36:24', '2019-01-18 07:36:24'),
+(5, 5, '01:59', '2019-01-18', 3, 'Sunday', 3500, '2019-01-18 07:36:31', '2019-01-18 07:36:31'),
+(6, 8, '23:00', '2019-02-07', 2, 'Thursday', 1000, '2019-01-18 07:36:37', '2019-01-18 07:36:37'),
+(7, 2, '20:00', '2019-01-01', 3, 'Sunday', 2500, '2019-01-18 10:04:56', '2019-01-18 10:04:56');
 
 -- --------------------------------------------------------
 
@@ -162,10 +166,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Adesina Taiwo Olajide', 'tolajide74@gmail.com', '$2y$10$wQVaRp6sjBP1fK.rCvKuXOqC9KpPmC/uDBGqE4jgj/vGYa946Rk/i', 'eyoCrrl7ia0YrzqQJlQfFEJj4Iohxue2amcsbh5xOedqZR7tPeziWxJIrsze', NULL, NULL),
-(2, 'Adesina Kehinde Temitope', 'aty@yahoo.com', 'mbmnmnj', NULL, '2019-01-15 13:53:30', '2019-01-16 18:47:13'),
-(3, 'Adesina Kehinde Temitopedddddd', 'adesina1514@yahoo.com', 'password', NULL, '2019-01-15 14:03:41', '2019-01-16 18:40:25'),
-(12, 'mjhjhjk', 'kolade@gmail.com', 'hjhjjk', NULL, '2019-01-16 18:52:35', '2019-01-16 18:52:35');
+(1, 'Adesina Taiwo Olajide', 'tolajide74@gmail.com', '$2y$10$wQVaRp6sjBP1fK.rCvKuXOqC9KpPmC/uDBGqE4jgj/vGYa946Rk/i', '6k9tq3zLL5EZWrl2S85iHRBtjesXmvYZWLmfBOuOYNcqLYNHcOwveQoeLzcG', NULL, NULL),
+(14, 'Administrator', 'admin@gmail.com', '$2y$10$wG3OLjzvXhDGWrStKOugoeuAxTV6G2x6StMnUL.iTUnoop2KTYK2K', 'PkJY0ctQ6Vjqt8avK7F02qsOLILj0wjrSYKESLnaGAJKlesCLcySkvwwSzza', '2019-01-18 05:54:23', '2019-01-18 05:54:23');
 
 --
 -- Indexes for dumped tables
@@ -216,7 +218,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cinemas`
 --
 ALTER TABLE `cinemas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -234,13 +236,13 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `show_times`
 --
 ALTER TABLE `show_times`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
