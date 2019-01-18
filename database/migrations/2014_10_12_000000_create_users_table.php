@@ -18,10 +18,9 @@ class CreateUsersTable extends Migration
             $table->string("name", 150);
             $table->string("email", 150)->unique();
             $table->string("password", 10);
-            $table->string("cinema_id", 50);
-            $table->string("is_admin", 1);
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

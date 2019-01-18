@@ -14,10 +14,11 @@ class CreateCinemasTable extends Migration
     public function up()
     {
         Schema::create('cinemas', function (Blueprint $table) {
-            $table->increments("cinema_id");
+            $table->increments("id");
             $table->string("cinema_name", 100);
             $table->string("cinema_location", 50);
-            $table->timestamps();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 

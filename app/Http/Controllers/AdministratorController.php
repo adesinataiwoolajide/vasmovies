@@ -24,13 +24,10 @@ class AdministratorController extends Controller
             "movie" => Movie::all(),
             "cinema" => Cinema::all(),
         ];
-        return view("administrator.home")->with($data);
+        return view("admin.home")->with($data);
     }
 
-    public function password()
-    {
-        return view("administrator.settings.password");
-    }
+    
 
     public function updatePassword(Request $request)
     {

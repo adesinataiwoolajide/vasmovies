@@ -23,7 +23,7 @@ class UserController extends Controller
     public function show()
     {
         $user =$this->model->all();
-        return view('administrator.user.index')->with('user' ,$user);
+        return view('admin.user.index')->with('user' ,$user);
     }
 
     
@@ -35,7 +35,7 @@ class UserController extends Controller
     public function create()
     {
         $cinema = Cinema::orderBy('cinema_name', 'asc')->get();
-        return view('administrator.user.create')->with(
+        return view('admin.user.create')->with(
             [
                 "cinema" =>$cinema,
             ]
@@ -56,10 +56,14 @@ class UserController extends Controller
             return redirect()->back()->with("error", "The E-Mail is in Use By Another User");
         }
 
-        $user->email = $request->input('email');
-        $user->name = $request->input('name');
-        $user->password = Hash::make($request->newPassword);     
-        if($this->model->create($request->only($this->model->getModel()->fillable))){
+        $data = [
+            'user' => new User,
+            "email" => $request->input('email'),
+            "name" => $request->input("name"),
+            "password" => Hash::make($request->input('password')),
+        ];
+  
+        if($this->model->create($data)){
            return redirect()->route("user.index")->with("success", "You Have Added The Staff Successfully");
         }   
              
@@ -76,7 +80,7 @@ class UserController extends Controller
     public function edit($id)
     {
          $user = $this->model->show($id);
-        return view('administrator.user.edit')->with(
+        return view('admin.user.edit')->with(
             [
                 "user" =>$user,
             ]
@@ -93,12 +97,13 @@ class UserController extends Controller
         ]);
 
             
-        $user = $this->model->show($id);
-        
-        $user->email = $request->input('email');
-        $user->name = $request->input('name');
-        $user->password = Hash::make($request->newPassword);
-        if($this->model->update($request->only($this->model->getModel()->fillable), $id)){
+         $data = [
+            'user' => new User,
+            "email" => $request->input('email'),
+            "name" => $request->input("name"),
+            "password" => Hash::make($request->input('password')),
+        ];
+        if($this->model->update($data, $id)){
             return redirect()->route("user.index")->with("success", "You Have Updated The Staff Details Successfully");
         }  
              

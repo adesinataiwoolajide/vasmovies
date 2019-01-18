@@ -28,7 +28,7 @@ class ShowtimeController extends Controller
         //$cinema->Cinema()->where('cinema_id','id',$user->age)->get();
         //$movie= $this->model->all();
         $showtime= $this->model->all();
-        return view('administrator.showtime.index')->with(
+        return view('admin.showtime.index')->with(
             [
                // "showing" =>$showing,
                 "showtime" => $showtime,
@@ -45,7 +45,7 @@ class ShowtimeController extends Controller
     {
         $cinema = Cinema::orderBy('cinema_name', 'asc')->get();
         $movie = Movie::orderBy('movie_title', 'asc')->get();
-        return view('administrator.showtime.create')->with(
+        return view('admin.showtime.create')->with(
             [
                 "cinema" =>$cinema,
                 "movie" =>$movie,
@@ -66,15 +66,21 @@ class ShowtimeController extends Controller
             'cinema_id' =>'required|min:1|max:255',
             'showing_date' => 'required|min:1|max:50',
             'showing_time' => 'required|min:1|max:50',
+            'show_day'=> 'required|min:1|max:50',
+            'amount'=> 'required|min:2|max:50',
         ]);
 
         $showtime = new Showtime;
-        $showtime->movie_id = $request->input('movie_id');
-        $showtime->cinema_id = $request->input('cinema_id');
-        $showtime->showing_date = $request->input('showing_date');
-        $showtime->showing_time = $request->input('showing_time');
-
-        if($this->model->create($request->only($this->model->getModel()->fillable))){
+        $data = [
+            "movie_id" => $request->input('movie_id'),
+            "cinema_id" => $request->input('cinema_id'),
+            "showing_date" => $request->input('showing_date'),
+            "showing_time" => $request->input("showing_time"),
+            "show_day" => $request->input("show_day"),
+            "amount" => $request->input("amount"),
+        ];
+        
+        if($this->model->create($data)){
             return redirect()->route("showtime.index")->with("success", "You Have Added The Movie Showtime Successfully");
         } 
     }
@@ -101,7 +107,7 @@ class ShowtimeController extends Controller
         $cinema = Cinema::orderBy('cinema_name', 'asc')->get();
         $movie = Movie::orderBy('movie_title', 'asc')->get();
         $showtime = $this->model->show($id);
-        return view('administrator.showtime.edit')->with(
+        return view('admin.showtime.edit')->with(
             [
                 "cinema" =>$cinema,
                 "movie" =>$movie,
@@ -124,15 +130,20 @@ class ShowtimeController extends Controller
             'cinema_id' =>'required|min:1|max:255',
             'showing_date' => 'required|min:1|max:50',
             'showing_time' => 'required|min:1|max:50',
+            'show_day'=> 'required|min:1|max:50',
+            'amount'=> 'required|min:2|max:50',
         ]);
 
-        $showtime = $this->model->show($id);
-        $showtime->movie_id = $request->input('movie_id');
-        $showtime->cinema_id = $request->input('cinema_id');
-        $showtime->showing_date = $request->input('showing_date');
-        $showtime->showing_time = $request->input('showing_time');
-
-        if($this->model->update($request->only($this->model->getModel()->fillable), $id)){
+        $showtime = new Showtime;
+        $data = [
+            "movie_id" => $request->input('movie_id'),
+            "cinema_id" => $request->input('cinema_id'),
+            "showing_date" => $request->input('showing_date'),
+            "showing_time" => $request->input("showing_time"),
+            "show_day" => $request->input("show_day"),
+            "amount" => $request->input("amount"),
+        ];
+        if($this->model->update($data, $id)){
             return redirect()->route("showtime.index")->with("success", "You Have Updated The Movie Showtime Details Successfully");
         } 
     }

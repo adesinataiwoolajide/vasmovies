@@ -10,16 +10,28 @@
 |
 */
 
+
+Route::get('/', 'HomeController@index')->name('website.home');
+Route::get('/movielist', 'HomeController@movielist')->name('movie.list');
+Route::get('/moviedetails/{id}', 'HomeController@moviedetails')->name('movie.details');
+Route::get('/moviedetails/{id}/{cinema_id}', 'HomeController@moviedetailshow')->name('movie.show');
+Route::get('/cinema-movies/{id}', 'HomeController@cinemaMovies')->name('movie.cinema');
+Route::get('/moviedays/{days}', 'HomeController@moviedays')->name('movie.day');
+
+Route::get("/admin", function(){
+    return view("admin.login");
+});
+
 //grouping the administrator routes
-Route::group(["prefix" => "admininistrator"], function () {
+Route::group(["prefix" => "admin"], function () {
     //Showing the admin login form
-    Route::get("/", "AccountController@index")->name("admininistrator.index");
+    //Route::get("/admin", "AccountController@index")->name("administrator.index");
 
     //Processing and Authenticationg the login     
-    Route::post("/login", "AccountController@login")->name("admininistrator.login");
+    Route::post("/login", "AccountController@login")->name("admin.login");
 
     //Logout the administrator
-    Route::get("/logout", "AccountController@logout")->name("admininistrator.logout");
+    Route::get("/logout", "AccountController@logout")->name("admin.logout");
     
     //displaying the administrator dashboard
     Route::get("/dashboard", "AdministratorController@show")->name("dash");  
@@ -94,8 +106,7 @@ Route::group(["prefix" => "admininistrator"], function () {
 
          //Adding The User
         Route::post("/save", "ShowtimeController@store")->name("showtime.save");
-        
-        //
+
         Route::get("delete/{id}", "ShowtimeController@destroy")->name("showtime.delete");
 
         Route::get("/edit/{id}", "ShowtimeController@edit")->name("showtime.edit");

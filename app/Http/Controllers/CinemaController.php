@@ -25,7 +25,7 @@ class CinemaController extends Controller
     {
         $cinema= $this->model->all();
        // $cinema= Cinema::orderBy('cinema_name', 'asc')->paginate(10);
-        return view('administrator.cinema.create')->with('cinema', $cinema);
+        return view('admin.cinema.create')->with('cinema', $cinema);
     }
 
     /**
@@ -35,7 +35,7 @@ class CinemaController extends Controller
      */
     public function create()
     {
-        return view('administrator.cinema.create');
+        return view('admin.cinema.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class CinemaController extends Controller
     public function edit($id)
     {
         $cinema =  $this->model->show($id);  
-        return view('administrator.cinema.edit')->with(
+        return view('admin.cinema.edit')->with(
             [
                 "cinema" =>$cinema,
             ]

@@ -45,58 +45,8 @@ class RegisterController extends Controller
 
     
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function register(Request $request)
-    {
+   
+    
 
-        /** @var User $user */
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',            
-        ]);        
-        try{
-            
-            $validatedData['password'] = bcrypt(array_get($validatedData, 'password'));
-            $validatedData['activation_code'] = str_random(30).time();
-            // $user = app(User::class)->create($validatedData);
-            $user = User::create($validatedData);
-
-        }catch(\Exception $exception){
-
-            logger()->error($exception);
-            return redirect()->back()->with('message', 'Unable to create new user.');
-
-        }
-        $user->notify(new UserRegisteredSuccessfully($user));
-        return redirect()->back()->with('status', 'Successfully created a new account.');       
-    }
-
-    /**
-     * Activate the user with given activation code.
-     * @param string $activationCode
-     * @return string
-    */
-    public function activateUser(string $activationCode)
-    {
-        try {
-            $user = User::where('activation_code', $activationCode)->first();
-            if(!$user){
-                return 'This code does not exist in our system';
-            }
-            $user->status = 1;
-            $user->activation_code = null;
-            $user->save();
-            auth()->login($user);
-        } catch (\Exception $exception) {
-            logger()->error($exception);
-            return "Whoops, somthing went wrong";
-        }
-        return redirect()->to('/home');
-    }
+    
 }

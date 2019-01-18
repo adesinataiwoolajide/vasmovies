@@ -9,7 +9,7 @@ class Showtime extends Model
      protected $table = 'show_times';
 
     protected $fillable = [
-        'movie_id', 'showing_time', 'showing_date', 'cinema_id',
+        'movie_id', 'showing_time', 'showing_date', 'cinema_id', 'show_day', 'amount',
     ];
 
     public function movies()

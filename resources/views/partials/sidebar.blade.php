@@ -2,7 +2,7 @@
 <div class="page-sidebar">
     <ul class="x-navigation">
         <li class="xn-logo">
-            <a class="navbar-brand" href="{{ route("dash") }}"><h5>VAS CIMENA</h5></a>
+            <a class="navbar-brand" href="{{ route("dash") }}"><h5>VAS Cinema</h5></a>
             <a href="#" class="x-navigation-control"></a>
         </li>
         <li class="xn-profile">
@@ -41,7 +41,6 @@
             <ul>
                 <li><a href="{{ route("movie.create") }}"><span class="fa fa-align-center"></span> Add Movie</a></li>
                 <li><a href="{{ route("movie.index") }}"><span class="fa fa-align-justify"></span> View Movies</a></li>
-                <li><a href="{{ route("movie.gallery") }}"><span class="fa fa-align-justify"></span> View Movies</a></li>
             </ul>         
         </li> 
 
@@ -66,7 +65,7 @@
         </li>
 
         <li class="xn-icon-button pull-right">
-            <a href="{{ route("admininistrator.logout") }}" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+            <a href="{{ route("admin.logout") }}" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
         </li>
         
     </ul>
@@ -81,7 +80,7 @@
                 </div>
                 <div class="mb-footer">
                     <div class="pull-right">
-                        <a href="{{ route("admininistrator.logout") }}" class="btn btn-success btn-lg">Yes</a>
+                        <a href="{{ route("admin.logout") }}" class="btn btn-success btn-lg">Yes</a>
                         <button class="btn btn-default btn-lg mb-control-close">No</button>
                     </div>
                 </div>

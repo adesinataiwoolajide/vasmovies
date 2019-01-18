@@ -23,16 +23,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //$cinema = Movie::with('moviescinema')->get();
-
-
-        ///Cinema::with('movies')->where('id','cinema_id')->get();
-
-
-        //return Movie::find('id')->cinemas()->where('id', 'cinema_id')->first();
         $cinema= Movie::with('cinemas')->get();
         $movie= $this->model->all();
-        return view('administrator.movie.index')->with(
+        return view('admin.movie.index')->with(
             [
                 "cinema" =>$cinema,
                 "movie" => $movie,
@@ -48,7 +41,7 @@ class MovieController extends Controller
     public function create()
     {
         $cinema = Cinema::orderBy('cinema_name', 'asc')->get();
-        return view('administrator.movie.create')->with(
+        return view('admin.movie.create')->with(
             [
                 "cinema" =>$cinema,
             ]
@@ -66,7 +59,7 @@ class MovieController extends Controller
         $this->validate($request, [
             'movie_title' =>'required|min:5|max:255|unique:movies',
             'movie_category' =>'required|min:2|max:255',
-            'movie_banner' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999',
+            'movie_banner' => 'nullable|mimes:jpeg,bmp,png,PNG,jpg,JPEG|max:1999',
             'cinema_id' => 'required|min:1|max:50',
             'top_actors' => 'required|min:2',
             'description' => 'required|min:5',
@@ -82,19 +75,27 @@ class MovieController extends Controller
             // file name to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             //upload the image
-            $path=$request->file('movie_banner')->storeAs('public/movie-banner', $fileNameToStore);
+            $path=$request->file('movie_banner')->move('movie_banner', $fileNameToStore);
         }else{
             $fileNameToStore = 'no-image.png';
         }
-        $movie = new Movie;
-        $movie->movie_title = $request->input('movie_title');
-        $movie->movie_category = $request->input('movie_category');
-        $movie->movie_banner = $request->input('movie_banner').time().'.'.$extension;;
-        $movie->cinema_id = $request->input('cinema_id');
-        $movie->top_actors = $request->input('top_actors');
+       // $movie = new Movie;
 
+        if(Movie::where("movie_title", $request->input("movie_title"))->exists()){
+            return redirect()->back()->with("error", "You Have Added The Film Before");
+        }
 
-        if($this->model->create($request->only($this->model->getModel()->fillable))){
+        $data = [
+            'movie' => new Movie,
+            "movie_title" => $request->input('movie_title'),
+            "movie_category" => $request->input("movie_category"),
+            "cinema_id" => $request->input('cinema_id'),
+            "top_actors" => $request->input('top_actors'),
+            "movie_banner" => $fileNameToStore,
+            "description" => $request->input("description")
+        ];
+
+        if($this->model->create($data)){
             return redirect()->route("movie.index")->with("success", "You Have Added The Movie Successfully");
         } 
     }
@@ -109,12 +110,12 @@ class MovieController extends Controller
     public function movieGallery()
     {
         $movie= $this->model->all();
-        return view('administrator.movie.gallery')->with('movie', $movie);
+        return view('admin.movie.gallery')->with('movie', $movie);
     }
     public function show($id)
     {
          $movie = $this->model->show($id);
-        return view('administrator.movie.show')->with(
+        return view('admin.movie.show')->with(
             [
                // "cinema" => $cinema,
                 "movie" => $movie,
@@ -133,7 +134,7 @@ class MovieController extends Controller
     {
         $cinema = Cinema::orderBy('cinema_name', 'asc')->get();
         $movie = $this->model->show($id);
-        return view('administrator.movie.edit')->with(
+        return view('admin.movie.edit')->with(
             [
                 "cinema" => $cinema,
                 "movie" => $movie,
@@ -154,13 +155,15 @@ class MovieController extends Controller
         $this->validate($request, [
             'movie_title' =>'required|min:5|max:255',
             'movie_category' =>'required|min:2|max:255',
-            'movie_banner' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999',
+            'movie_banner' => 'required|mimes:jpeg,bmp,png,PNG,jpg,JPEG|max:1999',
             'cinema_id' => 'required|min:1|max:50',
             'top_actors' => 'required|min:2',
             'description' => 'required|min:5',
+
         ]);
 
         if($request->hasFile('movie_banner')){
+            //Getting File Name With Extension
             $filenameWithExt = $request->file('movie_banner')->getClientOriginalName();
             // Get Just File Name
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -168,20 +171,23 @@ class MovieController extends Controller
             // file name to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             //upload the image
-            $path=$request->file('movie_banner')->storeAs('public/movie-banner', $fileNameToStore);
+            $path=$request->file('movie_banner')->move('movie_banner', $fileNameToStore);
+        }else{
+            $fileNameToStore = $fileNameToStore;
         }
-
-        $movie = $this->model->show($id);
-        $movie->movie_title = $request->input('movie_title');
-        $movie->movie_category = $request->input('movie_category');
-        $movie->cinema_id = $request->input('cinema_id');
-        $movie->top_actors = $request->input('top_actors');
+        $movie = new Movie;
        
-        if($request->hasFile('movie_banner')){
-            $movie->movie_banner = $fileNameToStore;
-        }
+        $data = [
+            
+            "movie_title" => $request->input('movie_title'),
+            "movie_category" => $request->input("movie_category"),
+            "cinema_id" => $request->input('cinema_id'),
+            "top_actors" => $request->input('top_actors'),
+            "movie_banner" => $fileNameToStore,
+            "description" => $request->input("description")
+        ];
 
-        if($this->model->update($request->only($this->model->getModel()->fillable), $id)){
+        if($this->model->update($data, $id)){
             return redirect()->route("movie.index")->with("success", "You Have Updated The Movie Details Successfully");
         } 
     }

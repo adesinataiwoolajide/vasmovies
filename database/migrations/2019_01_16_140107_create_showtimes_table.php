@@ -15,7 +15,14 @@ class CreateShowtimesTable extends Migration
     {
         Schema::create('showtimes', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer("movie_id", 10);
+            $table->sting("showing_time", 100);
+            $table->sting("showing_cate", 100);
+            $table->integer("cinema_id", 10);
+            $table->string("show_day", 20);
+            $table->integer("amount", 10);
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 
