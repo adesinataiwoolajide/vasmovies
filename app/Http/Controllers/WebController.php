@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use App\{Movie, Cinema, Showtime};
 use App\Repositories\Repository;
 use DB;
-class HomeController extends Controller
+class WebController extends Controller
 {
     /**
      * Display a listing of the resource.
